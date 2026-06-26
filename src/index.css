@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background: #fef8fa;
+  min-height: 100%;
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  color: #2b0b49;
+  -webkit-font-smoothing: none;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.font-display {
+  font-family: "Press Start 2P", "Anybody", sans-serif;
+}
+
+/* hide scrollbars, keep retro full-bleed feel */
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* scanline overlay */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(43, 11, 73, 0) 0px,
+    rgba(43, 11, 73, 0) 2px,
+    rgba(43, 11, 73, 0.035) 3px,
+    rgba(43, 11, 73, 0) 4px
+  );
+}
+
+.star-pixel {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  box-shadow: 4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff;
+  animation: twinkle 1.8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
